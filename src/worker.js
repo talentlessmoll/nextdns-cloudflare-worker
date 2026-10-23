@@ -7,9 +7,16 @@ export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
     const profileId = env.NEXTDNS_PROFILE_ID || "3c22d8";
+    const acceptHeader = request.headers.get("Accept") || "";
 
-    // Handle Landing Page / Health Check
-    if (url.pathname === "/" || url.pathname === "/health") {
+    // If accessed via a browser directly without a DNS payload, show the dashboard
+    const isBrowserVisit =
+      request.method === "GET" &&
+      !url.searchParams.has("dns") &&
+      !url.searchParams.has("name") &&
+      acceptHeader.includes("text/html");
+
+    if (url.pathname === "/" || url.pathname === "/health" || isBrowserVisit) {
       return renderLandingPage(request, profileId);
     }
 
