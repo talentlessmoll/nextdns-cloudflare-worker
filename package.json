@@ -1,0 +1,22 @@
+{
+  "name": "nextdns-cloudflare-worker",
+  "version": "1.0.0",
+  "description": "Custom DNS-over-HTTPS (DoH) Gateway backed by NextDNS and hosted on Cloudflare Workers",
+  "main": "src/worker.js",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "keywords": [
+    "dns",
+    "doh",
+    "nextdns",
+    "cloudflare-workers",
+    "dns-over-https"
+  ],
+  "author": "talentlessmoll",
+  "license": "MIT",
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  }
+}
